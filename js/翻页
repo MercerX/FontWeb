@@ -7,15 +7,15 @@ onmouseover开始执行js，this.blur();防止切换后还可再前一个窗口�
     </a>
   </li>
   <li class="d1" id="_gg">
-      <a href="javascript:;" onmouseover="switchTag_pub('_gg','_gg_list',1,6,'d4','d3');this.blur();">
+      <a href="javascript:;" onmouseover="switchTag_pub('_gg','_gg_list',2,6,'d4','d3');this.blur();">
       </a>
   </li>
   <li class="d1" id="_gg">
-        <a href="javascript:;" onmouseover="switchTag_pub('_gg','_gg_list',1,6,'d4','d3');this.blur();">
+        <a href="javascript:;" onmouseover="switchTag_pub('_gg','_gg_list',3,6,'d4','d3');this.blur();">
         </a>
   </li>
   <li class="d1" id="_gg">
-        <a href="javascript:;" onmouseover="switchTag_pub('_gg','_gg_list',1,6,'d4','d3');this.blur();">
+        <a href="javascript:;" onmouseover="switchTag_pub('_gg','_gg_list',4,6,'d4','d3');this.blur();">
         </a>
   </li>
  </ul>
