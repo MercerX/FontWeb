@@ -1,0 +1,62 @@
+/*
+con_id		容器ur的id
+speed_img  图片切换的周期，取值不要小于1000
+speed		淡入淡出效果的小周期，越小淡入淡出过程越快,一般取值不要超过10
+*/
+function initGallery(con_id,speed_img,speed){
+	var ppt,list,timer,timer2,end_num,now_num,next_num,now_item,next_item;
+	init();
+	function init(){
+		ppt = document.getElementById(con_id);
+		list = ppt.getElementsByTagName("li");
+		end_num = list.length -1;
+		for(var i=0;i<list.length;i++){
+			list[i].style.display = "none";
+			list[i].style.zIndex = list.length - i;
+		}
+		list[0].style.display = "block";
+		now_num = 0;
+		next_num = 1;
+		timer = setTimeout(change_img,speed_img);
+	}
+	function change_img(){
+	//判断下一张图片元素	
+		if(now_num == end_num){
+			next_num = 0;
+		}else{
+			next_num = now_num+1;
+		}
+		now_item = list[now_num];
+		next_item = list[next_num];
+		now_item.style.display = "block";
+		next_item.style.display = "block";
+		now_item.ykrOpacity = 100;
+		next_item.ykrOpacity = 0;
+		timer2 = setInterval(change_opacity,speed);
+	//改变now_num,为下次效果设置参数	
+	}
+
+	function change_opacity(){
+		now_item.style.opacity = now_item.ykrOpacity/100;
+		now_item.style.filter = "alpha(opacity:"+now_item.ykrOpacity+")";
+		next_item.style.opacity = next_item.ykrOpactity/100;
+		next_item.style.filter = "alpha(opacity:"+next_item.ykrOpacity+")";
+		if(now_item.ykrOpacity > 0){
+	//		console.log(now_item.ykrOpacity);
+			now_item.ykrOpacity -= 1;
+			now_item.style.opacity = now_item.ykrOpactity/100;
+			now_item.style.filter = "alpha(opacity:"+now_item.ykrOpacity+")";
+			next_item.ykrOpacity += 1;
+			next_item.style.opacity = next_item.ykrOpacity/100;
+			next_item.style.filter = "alpha(opacity:"+next_item.ykrOpacity+")";
+		}else{
+			clearInterval(timer2);
+			now_item.style.display = "none";
+			now_num = next_num;
+			list[now_num].style.opacity = 1
+			list[now_num].style.filter = "alpha(opacity:"+100+")";
+			timer = setTimeout(change_img,speed_img);
+		}
+	}
+	
+}
