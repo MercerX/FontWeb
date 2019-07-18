@@ -1,0 +1,31 @@
+//html部分
+                <div  id="time">
+                    <span id="data"></span>
+                    <span id="today"></span>
+                </div>
+                
+                
+//js部分
+function p(s) {
+
+    return s < 10 ? '0' + s: s;
+
+}
+
+function nowtime() {
+    var myDate = new Date();
+    var year = myDate.getFullYear();
+    var month = myDate.getMonth()+1;
+    var date = myDate.getDate();
+    var h = myDate.getHours();
+    var m = myDate.getMinutes();
+    var s = myDate.getSeconds();
+    var day = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+    var data = year+ '年' + p(month)+ "月"+ p(date)+"日";
+    var hour = p(h)+ ':'+ p(m);
+    $("#data").html(data);
+    $("#today").html(day[myDate.getDay()]);
+}
+nowtime();
+
+setInterval(nowtime,1000);
